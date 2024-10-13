@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/9d37948b2c.js" crossorigin="anonymous"></script>
+        <script defer type="module" src="./script.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <main class="container">
+            <header>
+                <nav>
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png" alt="Netflix_2015_logo">
+                        </a>
+                    </div>
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </nav>
+            </header>
+            <div class="menu_bg"></div>
+            <nav class="gnb">
+                <ul>
+                    <li><a href="#">결제</a>
+                        <ul class="submenu">
+                            <li><a href="#">결제하기</a></li>
+                            <li><a href="#">할인안내</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">영화</a>
+                        <ul class="submenu">
+                            <li><a href="#">현재상영작</a></li>
+                            <li><a href="#">개봉예정작</a></li>
+                            <li><a href="#">인기상영작</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">이벤트</a>
+                        <ul class="submenu">
+                            <li><a href="#">영화</a></li>
+                            <li><a href="#">제휴할인</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">스토어</a>
+                        <ul class="submenu">
+                            <li><a href="#">베스트</a></li>
+                            <li><a href="#">포토카드</a></li>
+                            <li><a href="#">굿즈상품</a></li>
+                            <li><a href="#">스낵음료</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">회원가입</a>
+                        <ul class="submenu">
+                            <li><a href="#">홈</a></li>
+                            <li><a href="#">미성년자/성인</a></li>
+                            <li><a href="#">국내/해외거주</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <section class="mainSlider">Slider</section>
+            <section class="movie">
+                <article class="nowPlaying">
+                    <h1>무비차트 | 현재 상영작</h1>
+                    <ul>
+                        <!-- <li>
+                            <div class="moviePoster">
+                                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/tJ4si3Kp6YnOsGMFdC4VaWINq5L.jpg" alt="">
+                                <span class>18세</span>
+                                <span class>1</span>
+                            </div>
+                            <div class="movieTitle">툼 레이더: 라라 크로프트의 전설</div>
+                            <div class="movieDesc">
+                                <span>2024-10-12</span>
+                                <span>⭐8.74</span>
+                            </div>
+                        </li> -->
+                    </ul>
+                    <span id="nowPlayingLeftArrow" class="arrowBtn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </span>
+                    <span id="nowPlayingRightArrow" class="arrowBtn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+                </article>
+                <article class="upcoming">
+                    <h1>무비차트 | 개봉예정작</h1>
+                    <ul>
+                        <span id="upcomingLeftArrow" class="arrowBtn">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </span>
+                        <span id="upcomingRightArrow" class="arrowBtn">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </span>
+                    </ul>
+                </article>
+                <article class="toprated">
+                    <h1>무비차트 | 인기 상영작</h1>
+                    <ul>
+                        <span id="topratedLeftArrow" class="arrowBtn">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </span>
+                        <span id="topratedRightArrow" class="arrowBtn">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </span>
+                    </ul>
+                </article>
+            </section>
+            <section class="faq">
+                <div class="faq-inner">
+                    <h1>자주 묻는 질문</h1>
+                    <div class="accordion">
+                        <div class="title active">넷플릭스란 무엇인가요?</div>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, vitae ducimus eum aspernatur tempore cum, unde nam obcaecati porro, fugiat reprehenderit quos minima explicabo at consequatur nemo! Obcaecati, expedita deleniti!
+                        </div>
+                        <div class="title">넷플릭스 요금은 얼마인가요?</div>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, vitae ducimus eum aspernatur tempore cum, unde nam obcaecati porro, fugiat reprehenderit quos minima explicabo at consequatur nemo! Obcaecati, expedita deleniti!
+                        </div>
+                        <div class="title">어디에서 시청할 수 있나요?</div>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, vitae ducimus eum aspernatur tempore cum, unde nam obcaecati porro, fugiat reprehenderit quos minima explicabo at consequatur nemo! Obcaecati, expedita deleniti!
+                        </div>
+                        <div class="title">멤버쉽을 해지하려면 어떻게 해야하나요?</div>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, vitae ducimus eum aspernatur tempore cum, unde nam obcaecati porro, fugiat reprehenderit quos minima explicabo at consequatur nemo! Obcaecati, expedita deleniti!
+                        </div>
+                        <div class="title">넷플릭스에서 어떤 컨텐츠를 시청할 수 있나요?</div>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, vitae ducimus eum aspernatur tempore cum, unde nam obcaecati porro, fugiat reprehenderit quos minima explicabo at consequatur nemo! Obcaecati, expedita deleniti!
+                        </div>
+                        <div class="title">아이들이 넷플릭스를 봐도 좋을까요?</div>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, vitae ducimus eum aspernatur tempore cum, unde nam obcaecati porro, fugiat reprehenderit quos minima explicabo at consequatur nemo! Obcaecati, expedita deleniti!
+                        </div>
+                    </div>
+                    <div class="newsletter">
+                        <p>
+                            시청할 준비가 되셨나요?<br>멤버쉽을 등록하거나 재시작하려면 이메일 주소를 입력하세요.
+                        </p>
+                        <form name ="newsletter" action="http://127.0.0.1:5500" method="get">
+                            <input type="text" name="emailAddress" id="emailAddress" placeholder="example@example.com">
+                            <input type="submit" value="시작하기">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div class="modal-search">
+            <div class="close">
+                <i class="fa-solid fa-x"></i>
+            </div>
+            <div class="search">
+                <form 
+                name="searchForm"
+                id="searchForm"
+                 method="get"
+                >
+                <input type="search" id="search-box" placeholder="보고싶은 영화를 검색하세요">
+                <input type="submit" value="검색하기">
+                </form><!-- 폼태그 자체에 전후문자선택자가 적용 안되서 .search에 전후 문자 선택자에 적용한다 //돋보기 넣으려고 함 -->
+                <p class="hash-tag">#흑백요리사 #아시안게임 #오징어게임시즌2 #범죄도시5</p>
+            </div>
+        </div>
+    </body>
+</html>

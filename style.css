@@ -1,0 +1,505 @@
+@charset "UTF-8";
+/*reset / SASS는 LIVE SASS COMPILER만 다운 받고 Watching 키면 됨*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*variables*/
+/*common*/
+html {
+  font-size: 14px;
+  background: #000;
+  color: #fff;
+}
+
+/*contents*/
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+/*header*/
+header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center; /*수평정렬*/
+  background: #000;
+}
+header nav {
+  width: 900px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 3; /*다른 영역보다 보이게 할려고 함*/
+}
+header nav .logo img {
+  width: auto;
+  height: 30px;
+}
+header nav .search-box i {
+  cursor: pointer;
+  font-size: 1.6rem; /*14px의 160%를 준다*/
+}
+
+.menu_bg {
+  width: 100%;
+  height: 260px;
+  position: fixed;
+  top: 0;
+  background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0.4));
+  opacity: 1;
+  max-height: 0; /* max height 최대 값까지 보여주겠다!  height 값이 있지만 현재 max-height 하였기 때문에 보여지지 않음*/
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  z-index: 1;
+}
+
+/*gnb*/
+.gnb {
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0.4));
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0; /*스티커가 될 위치*/
+  z-index: 1;
+}
+.gnb > ul {
+  width: 900px;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly; /*요소들을 각각여백을 주고 만든다*/
+  align-items: center;
+}
+.gnb > ul > li > a {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.gnb > ul > li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #dc143c; /*면인데 height 2px 줘서 선처럼 보인다*/
+  transform-origin: center;
+  transform: translateX(-50%);
+  margin-left: 50%;
+  transition: width 0.3s;
+}
+.gnb > ul > li > a:hover {
+  color: #dc143c;
+}
+.gnb > ul > li > a:hover::after {
+  width: 100%;
+}
+.gnb > ul .submenu {
+  width: 168px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transform: translateX(-34px);
+  transition: opacity 0.3s ease, max-height 0.3s;
+}
+.gnb > ul .submenu a:hover {
+  text-decoration: underline;
+}
+
+/* modal-search */
+.modal-search {
+  width: 100%;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: -300;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+.modal-search.active {
+  top: 0;
+}
+.modal-search .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.modal-search .close i {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-search .search {
+  width: 500px;
+  position: relative;
+}
+.modal-search .search form {
+  display: flex;
+}
+.modal-search .search form input[type=search] {
+  flex: 5;
+  padding: 15px;
+  border: none;
+  padding-left: 30px;
+}
+.modal-search .search form input[type=search]::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.modal-search .search form input[type=search]::placeholder {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.modal-search .search form input[type=search]:focus {
+  outline: none;
+}
+.modal-search .search form input[type=search]:focus::-moz-placeholder {
+  opacity: 0;
+  -moz-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.modal-search .search form input[type=search]:focus::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.modal-search .search form input[type=submit] {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  background-color: #dc143c;
+  color: #fff;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+.modal-search .search form input[type=submit]:hover {
+  opacity: 1;
+}
+.modal-search .search::before {
+  content: "\f002"; /* 유니코드 값 */
+  font-family: "fontawesome";
+  color: #777;
+  position: absolute;
+  top: 21%;
+  left: 8px;
+  font-size: 1.2rem;
+}
+.modal-search .search .hash-tag {
+  font-size: 1.1rem;
+  color: #ff0;
+  margin-top: 6px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/*main slider*/
+.mainSlider {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.mainSlider figure {
+  width: 100%;
+  height: 800px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.mainSlider figure.active {
+  opacity: 1;
+}
+.mainSlider figure img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+/*movie*/
+.movie {
+  width: 100%;
+  height: 100%;
+}
+.movie .nowPlaying,
+.movie .upcoming,
+.movie .toprated {
+  width: 900px;
+  margin: 20px auto;
+  overflow: hidden;
+  position: relative;
+}
+.movie .nowPlaying h1,
+.movie .upcoming h1,
+.movie .toprated h1 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+.movie .nowPlaying ul,
+.movie .upcoming ul,
+.movie .toprated ul {
+  display: flex;
+  gap: 25px;
+  transition: transform 0.5s;
+}
+.movie .nowPlaying ul li,
+.movie .upcoming ul li,
+.movie .toprated ul li {
+  cursor: pointer;
+}
+.movie .nowPlaying ul li .moviePoster,
+.movie .upcoming ul li .moviePoster,
+.movie .toprated ul li .moviePoster {
+  width: 160px;
+  height: 234px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.movie .nowPlaying ul li .moviePoster::before,
+.movie .upcoming ul li .moviePoster::before,
+.movie .toprated ul li .moviePoster::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.movie .nowPlaying ul li .moviePoster img,
+.movie .upcoming ul li .moviePoster img,
+.movie .toprated ul li .moviePoster img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.movie .nowPlaying ul li .moviePoster span,
+.movie .upcoming ul li .moviePoster span,
+.movie .toprated ul li .moviePoster span {
+  position: absolute;
+}
+.movie .nowPlaying ul li .moviePoster span:nth-of-type(1),
+.movie .upcoming ul li .moviePoster span:nth-of-type(1),
+.movie .toprated ul li .moviePoster span:nth-of-type(1) {
+  top: 10px;
+  right: 10px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(220, 20, 60, 0.7);
+  border-radius: 8px;
+  text-align: center;
+  line-height: 36px;
+}
+.movie .nowPlaying ul li .moviePoster span:nth-of-type(2),
+.movie .upcoming ul li .moviePoster span:nth-of-type(2),
+.movie .toprated ul li .moviePoster span:nth-of-type(2) {
+  left: 10px;
+  bottom: 10px;
+  font-size: 2.4rem;
+  font-style: italic;
+}
+.movie .nowPlaying ul li .movieTitle,
+.movie .upcoming ul li .movieTitle,
+.movie .toprated ul li .movieTitle {
+  width: 160px;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: bold;
+  text-overflow: ellipsis; /* 영화제목이 길더라도 .. 줄임말로 바뀐다  white-space: nowrap text-overflow: ellipsis overflow: hidden 형제로 같이 쓴다*/
+  overflow: hidden;
+  white-space: nowrap;
+}
+.movie .nowPlaying ul li .movieDesc,
+.movie .upcoming ul li .movieDesc,
+.movie .toprated ul li .movieDesc {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  height: 10px;
+  line-height: 8px;
+}
+.movie .nowPlaying ul li .movieDesc span:nth-child(1),
+.movie .upcoming ul li .movieDesc span:nth-child(1),
+.movie .toprated ul li .movieDesc span:nth-child(1) {
+  font-weight: bold;
+  border-right: 1px solid #ccc;
+  padding-right: 28px;
+}
+.movie .nowPlaying .arrowBtn,
+.movie .upcoming .arrowBtn,
+.movie .toprated .arrowBtn {
+  z-index: 2;
+  cursor: pointer;
+  color: #dc143c;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  padding-top: 2px;
+  transform: translateY(-50%);
+  transition: background 0.3s, color 0.3s;
+}
+.movie .nowPlaying .arrowBtn#nowPlayingLeftArrow, .movie .nowPlaying .arrowBtn#upcomingLeftArrow, .movie .nowPlaying .arrowBtn#topratedLeftArrow,
+.movie .upcoming .arrowBtn#nowPlayingLeftArrow,
+.movie .upcoming .arrowBtn#upcomingLeftArrow,
+.movie .upcoming .arrowBtn#topratedLeftArrow,
+.movie .toprated .arrowBtn#nowPlayingLeftArrow,
+.movie .toprated .arrowBtn#upcomingLeftArrow,
+.movie .toprated .arrowBtn#topratedLeftArrow {
+  left: 0;
+}
+.movie .nowPlaying .arrowBtn#nowPlayingRightArrow, .movie .nowPlaying .arrowBtn#upcomingRightArrow, .movie .nowPlaying .arrowBtn#topratedRightArrow,
+.movie .upcoming .arrowBtn#nowPlayingRightArrow,
+.movie .upcoming .arrowBtn#upcomingRightArrow,
+.movie .upcoming .arrowBtn#topratedRightArrow,
+.movie .toprated .arrowBtn#nowPlayingRightArrow,
+.movie .toprated .arrowBtn#upcomingRightArrow,
+.movie .toprated .arrowBtn#topratedRightArrow {
+  right: 0;
+}
+.movie .nowPlaying .arrowBtn i,
+.movie .upcoming .arrowBtn i,
+.movie .toprated .arrowBtn i {
+  font-size: 0.8rem;
+}
+.movie .nowPlaying .arrowBtn:hover,
+.movie .upcoming .arrowBtn:hover,
+.movie .toprated .arrowBtn:hover {
+  color: #fff;
+  background-color: #dc143c;
+}
+
+/*fAQ*/
+.faq {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.faq .faq-inner {
+  width: 700px;
+}
+.faq .faq-inner h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 22px;
+}
+.faq .faq-inner .accordion {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+.faq .faq-inner .accordion .title {
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 8px;
+  padding: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.faq .faq-inner .accordion .title::after {
+  content: "+"; /*문자쓰기 위해서*/
+  font-family: "fontawesome";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s;
+}
+.faq .faq-inner .accordion .title.active {
+  background: #353b48;
+}
+.faq .faq-inner .accordion .title.active::after {
+  content: "+"; /*문자쓰기 위해서*/
+  font-family: "fontawesome";
+  transform: translateY(-50%) rotate(45deg);
+}
+.faq .faq-inner .accordion .content {
+  font-size: 1rem;
+  margin-bottom: 16px;
+  padding: 10px;
+  display: none;
+}
+.faq .faq-inner .newsletter {
+  width: 100%;
+  text-align: center;
+}
+.faq .faq-inner .newsletter p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #dc143c;
+  padding: 10px 5px;
+  margin-bottom: 10px;
+}
+.faq .faq-inner .newsletter form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+}
+.faq .faq-inner .newsletter form input[type=text] {
+  height: 100%;
+  border: none;
+  font-size: 1.4rem;
+  flex: 3;
+  padding-left: 10px;
+}
+.faq .faq-inner .newsletter form input[type=text]:focus {
+  outline: none;
+}
+.faq .faq-inner .newsletter form input[type=submit] {
+  height: 100%;
+  border: none;
+  font-size: 1.4rem;
+  flex: 1;
+  background: #dc143c;
+  color: #fff;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
